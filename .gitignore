@@ -1,0 +1,13 @@
+.env
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+ffmpeg.exe
+OMNI_Playlists.db
+test.png
+test_card.png
+test_resolver.py

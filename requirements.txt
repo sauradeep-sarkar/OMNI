@@ -1,6 +1,31 @@
+# ==========================================
+# SEGMENT 1: TERMUX / ANDROID SETUP
+# ==========================================
+# OMNI Python dependencies for Termux/Android
+# Install native Termux packages first by reading the README.md!
+#
+# Pillow is intentionally installed with pkg because 
+# pip/source builds can fail on Termux:
+#   pkg install python-pillow
+#
+# PyNaCl needs libsodium. Install it using:
+#   pkg install libsodium
+#   SODIUM_INSTALL=system pip install --no-cache-dir PyNaCl
+#
+# Once native packages are handled, install the rest manually:
+#   pip install discord.py yt-dlp ytmusicapi python-dotenv
+
+
+# ==========================================
+# SEGMENT 2: WINDOWS / PC SETUP
+# ==========================================
+# For standard Windows, Mac, or Linux systems, you can safely 
+# install everything at once by simply running:
+#   pip install -r requirements.txt
+
 discord.py
-PyNaCl
 yt-dlp
 ytmusicapi
-Pillow
 python-dotenv
+PyNaCl
+Pillow

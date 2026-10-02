@@ -77,13 +77,19 @@ python -m pip install -U discord.py Pillow yt-dlp ytmusicapi python-dotenv
 SODIUM_INSTALL=system python -m pip install --no-cache-dir PyNaCl
 ```
 
-### Step 4: Fix FFmpeg Path
+### Step 4: Create Configuration File
+Create the `.env` file for your Discord bot token. Run this command (replace `YOUR_TOKEN_HERE` with your actual token):
+```bash
+echo "DISCORD_TOKEN=YOUR_TOKEN_HERE" > .env
+```
+
+### Step 5: Fix FFmpeg Path
 If moving the bot from Windows to Termux, open `music/manager.py` and ensure the FFmpeg executable is set to `ffmpeg` (not `ffmpeg.exe`):
 ```python
 executable="ffmpeg"
 ```
 
-### Step 5: Start the Bot
+### Step 6: Start the Bot
 ```bash
 python main.py
 ```

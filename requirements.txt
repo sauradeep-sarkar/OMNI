@@ -1,5 +1,6 @@
 discord.py
-python-dotenv
 PyNaCl
-
 yt-dlp
+ytmusicapi
+Pillow
+python-dotenv

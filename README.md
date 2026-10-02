@@ -7,14 +7,26 @@ OMNI is a feature-rich, high-performance Discord music bot designed to provide s
 - **Queue Control**: Add, remove, clear, reorder, shuffle, skip, stop, and pause.
 - **Modes**: Track loop, Queue loop, and Autoplay (Infinite Radio).
 - **Interactive UI**: Embedded player with dynamic buttons, progress bar, and "Similar Songs" dropdown.
-- **User Playlists**: Save favorite songs to your personal cross-server database.
+- **User Playlists**: Save favorite songs to your personal server-specific database.
 - **Server Isolation**: Each server gets its own independent queue and player state.
 
-## 🛠️ Tech Stack
-- **Core**: Python 3.10+, `discord.py` (v2.x)
-- **Audio**: `FFmpeg`, `yt-dlp`
-- **APIs**: `ytmusicapi`, `spotipy`
-- **Database**: `SQLite3`
+---
+
+## 🛠️ Dependencies & Packages
+
+### Dependencies
+*(These are external tools or system-level dependencies)*
+- **FFmpeg**: The core external binary engine required to encode and stream live audio chunks over Discord's voice protocol.
+- **SQLite**: The lightweight database engine used to store user playlists (this comes pre-installed with Python natively, so it doesn't need to be downloaded separately).
+
+### Packages
+*(These are the Python modules that should be listed in your `requirements.txt`)*
+- **discord.py**: The core Discord framework that handles everything from the bot's connection to Slash Commands and the interactive button UI.
+- **PyNaCl**: An encryption library specifically required by `discord.py` to support transmitting audio data to Discord voice channels.
+- **yt-dlp**: The heavy-lifting extraction library used to bypass restrictions, grab metadata, and resolve the actual `.m3u8` or `.webm` direct media streams.
+- **ytmusicapi**: Used extensively for the rapid text-based search, autocomplete suggestions, and the "Autoplay / Similar Songs" recommendation engine.
+- **Pillow**: The Python Imaging Library (PIL) used behind the scenes to dynamically draw and generate the beautiful, customized music player card graphic.
+- **python-dotenv**: A simple utility used to securely load your `DISCORD_TOKEN` from the hidden `.env` file.
 
 ---
 
@@ -30,8 +42,6 @@ OMNI is a feature-rich, high-performance Discord music bot designed to provide s
    Create a `.env` file in the root directory:
    ```env
    DISCORD_TOKEN=your_bot_token_here
-   SPOTIPY_CLIENT_ID=your_spotify_client_id
-   SPOTIPY_CLIENT_SECRET=your_spotify_client_secret
    ```
 
 3. **Run the Bot**:
@@ -49,7 +59,7 @@ Running OMNI on an Android phone using Termux requires specific native packages 
 Open Termux and run:
 ```bash
 pkg update && pkg upgrade
-pkg install python clang make pkg-config libffi libsodium rust rust-std-aarch64-linux-android ffmpeg
+pkg install python clang make pkg-config libffi libsodium ffmpeg
 ```
 
 ### Step 2: Grant Storage Access
@@ -65,7 +75,6 @@ Install the required packages in this exact order to prevent native build errors
 python -m pip install --upgrade pip
 python -m pip install -U discord.py Pillow yt-dlp ytmusicapi python-dotenv
 SODIUM_INSTALL=system python -m pip install --no-cache-dir PyNaCl
-python -m pip install --no-cache-dir davey
 ```
 
 ### Step 4: Fix FFmpeg Path
@@ -85,5 +94,4 @@ python main.py
 
 - **`Executable 'ffmpeg.exe' was not found`**: You are running on Android/Linux but the code still says `ffmpeg.exe`. Change it to `ffmpeg` in `manager.py`.
 - **`PyNaCl library needed in order to use voice`**: Native C compilation failed. Ensure you ran `pkg install libsodium` and re-run the `PyNaCl` pip install command from Step 3.
-- **`davey library needed in order to use voice`**: Rust compilation failed. Ensure you installed the Rust packages from Step 1 before installing `davey`.
 - **`Unknown interaction (10062)`**: This is a Discord API timeout. The bot took too long to respond to a button press, this is normal on slower network connections.

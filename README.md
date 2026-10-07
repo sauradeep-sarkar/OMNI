@@ -71,12 +71,15 @@ Then navigate to your bot folder (e.g., `cd /storage/emulated/0/Download/OMNI`).
 
 ### Step 3: Install Python Dependencies
 Install the required packages in this exact order to prevent native build errors:
-```bash
-python -m pip install --upgrade pip
+`ash
 python -m pip install -U discord.py Pillow yt-dlp ytmusicapi python-dotenv
-export CARGO_BUILD_JOBS=1
-SODIUM_INSTALL=system python -m pip install --no-cache-dir PyNaCl davey
-```
+SODIUM_INSTALL=system python -m pip install --no-cache-dir PyNaCl
+
+# Install pre-compiled maturin from Termux User Repository (TUR) to bypass Rust compilation
+python -m pip install --extra-index-url https://termux-user-repository.github.io/pypi/ maturin
+# Install davey without build isolation so it uses the pre-compiled maturin
+python -m pip install --no-cache-dir --no-build-isolation davey
+`
 
 ### Step 4: Create Configuration File
 Create the `.env` file for your Discord bot token. Run this command (replace `YOUR_TOKEN_HERE` with your actual token):

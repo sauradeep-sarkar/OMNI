@@ -59,7 +59,7 @@ Running OMNI on an Android phone using Termux requires specific native packages 
 Open Termux and run:
 ```bash
 pkg update && pkg upgrade
-pkg install python clang make pkg-config libffi libsodium ffmpeg rust binutils
+pkg install python clang make pkg-config libffi libsodium ffmpeg rust binutils python-pillow
 ```
 
 ### Step 2: Grant Storage Access
@@ -72,7 +72,7 @@ Then navigate to your bot folder (e.g., `cd /storage/emulated/0/Download/OMNI`).
 ### Step 3: Install Python Dependencies
 Install the required packages in this exact order to prevent native build errors:
 `ash
-python -m pip install -U discord.py Pillow yt-dlp ytmusicapi python-dotenv
+python -m pip install -U discord.py yt-dlp ytmusicapi python-dotenv
 SODIUM_INSTALL=system python -m pip install --no-cache-dir PyNaCl
 
 # Install pre-compiled maturin from Termux User Repository (TUR) to bypass Rust compilation

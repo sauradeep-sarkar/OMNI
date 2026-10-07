@@ -74,6 +74,7 @@ Install the required packages in this exact order to prevent native build errors
 ```bash
 python -m pip install --upgrade pip
 python -m pip install -U discord.py Pillow yt-dlp ytmusicapi python-dotenv
+export CARGO_BUILD_JOBS=1
 SODIUM_INSTALL=system python -m pip install --no-cache-dir PyNaCl davey
 ```
 

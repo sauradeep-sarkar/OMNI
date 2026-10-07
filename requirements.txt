@@ -29,3 +29,5 @@ ytmusicapi
 python-dotenv
 PyNaCl
 Pillow
+
+davey

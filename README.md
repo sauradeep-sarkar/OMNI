@@ -59,7 +59,7 @@ Running OMNI on an Android phone using Termux requires specific native packages 
 Open Termux and run:
 ```bash
 pkg update && pkg upgrade
-pkg install python clang make pkg-config libffi libsodium ffmpeg
+pkg install python clang make pkg-config libffi libsodium ffmpeg rust binutils
 ```
 
 ### Step 2: Grant Storage Access
@@ -74,7 +74,7 @@ Install the required packages in this exact order to prevent native build errors
 ```bash
 python -m pip install --upgrade pip
 python -m pip install -U discord.py Pillow yt-dlp ytmusicapi python-dotenv
-SODIUM_INSTALL=system python -m pip install --no-cache-dir PyNaCl
+SODIUM_INSTALL=system python -m pip install --no-cache-dir PyNaCl davey
 ```
 
 ### Step 4: Create Configuration File

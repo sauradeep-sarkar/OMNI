@@ -77,8 +77,11 @@ class MusicCog(commands.Cog):
 
         # Regular Text Search
         try:
-            results = await loop.run_in_executor(
-                None, lambda: self.resolver.ytmusic.search(current, limit=20)
+            results = await asyncio.wait_for(
+                loop.run_in_executor(
+                    None, lambda: self.resolver.ytmusic.search(current, limit=10)
+                ),
+                timeout=2.0
             )
             choices = []
             for r in results:
